@@ -42,14 +42,6 @@ class Betting(db.Model):
                      db.ForeignKeyConstraint(['user_id'], ['users.id'], name='User_id_fk'))
 
 
-class Item(db.Model):
-    __tablename__ = 'items'
-
-    id = db.Column(db.Integer, db.Sequence('user_id_seq'), primary_key=True)
-    name = db.Column(db.String(50))
-    photo = db.Column(db.String(250))
-    price = db.Column(db.Integer)  # Цена в копейках (потом делим на 100)
-
 
 async def create_db():
     await db.set_bind(POSTGRES_URI)  # устанавливаем связь с базой данных
